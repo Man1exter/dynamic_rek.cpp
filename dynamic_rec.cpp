@@ -9,6 +9,7 @@
 #include <typeinfo>
 #include <string>
 #include <ctime>
+#include <sstream>
 #include <algorithm>
 #include <deque>
 #include <functional>
@@ -47,7 +48,35 @@ int64_t fib_rek(int64_t n){
 
 int main(){
     
+setlocale(LC_ALL,"");
+srand(time(0));
 
+int64_t n = 0;          // x >= 0
+
+while(cin.fail() || n <= 0){
+    cout << "Wprowadz n" << endl;
+    cin >> n;
+    cin.clear();
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+}
+
+t.resize(n+1,-5);
+
+auto start = std::chrono::high_resolution_clock::now();
+cout << fib_dynamic(n) << endl;
+auto finish = chrono::high_resolution_clock::now();
+cout << "sekundy: " << std::chrono::duration_cast<std::chrono::milliseconds>(finish - start).count() << endl;
+
+cout << endl;
+
+start = std::chrono::high_resolution_clock::now();
+cout << fib_rek(n) << endl;
+finish = chrono::high_resolution_clock::now();
+cout << "sekundy: " << std::chrono::duration_cast<std::chrono::milliseconds>(finish - start).count() << endl;
+
+cout << endl;
+
+printSTL(t , " " , true);
 
     return 0;
 }
