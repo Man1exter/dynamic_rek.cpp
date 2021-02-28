@@ -60,11 +60,11 @@ while(cin.fail() || n <= 0){
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
 }
 
-t.resize(n+1,-5);
+t.resize( n + 1 , -5 ); // same -5 od poczatku, az do samego konca...(jako elementy wektora)..
 
-auto start = std::chrono::high_resolution_clock::now();
+auto start = std::chrono::high_resolution_clock::now();      // poczatek czasu odliczania..
 cout << fib_dynamic(n) << endl;
-auto finish = chrono::high_resolution_clock::now();
+auto finish = chrono::high_resolution_clock::now();          // koniec czasu odliczania..
 cout << "sekundy: " << std::chrono::duration_cast<std::chrono::milliseconds>(finish - start).count() << endl;
 
 cout << endl;
